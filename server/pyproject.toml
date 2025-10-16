@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "server"
+version = "0.0.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi[standard]", "pydantic-settings"]
+
+[dependency-groups]
+lint = ["ruff"]
+test = ["pytest-cov"]
+
+[project.scripts]
+server = "server.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/server"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=src",
+    "--cov-report=term",
+    "--cov-report=html",
+    "--cov-fail-under=95",
+    "-p no:cacheprovider",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "COM812", # missing-trailing-comma
+    "D100",   # undocumented-public-module
+    "D101",   # undocumented-public-class
+    # "D102",   # undocumented-public-method
+    "D103", # undocumented-public-function
+    # "D107",   # undocumented-public-init
+    "D203",   # incorrect-blank-line-before-class
+    "D213",   # multi-line-summary-second-line
+    "INP001", # implicit-namespace-package
+]
+
+[tool.ruff.lint.per-file-ignores]
+"*test*.py" = [
+    "PLR2004", # magic-value-comparison
+    "S101",    # assert
+]
