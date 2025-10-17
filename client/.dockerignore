@@ -1,0 +1,9 @@
+components.json
+dist/
+.dockerignore
+eslint.config.ts
+.gitignore
+node_modules/
+.prettierignore
+.prettierrc
+.tanstack/

@@ -1,0 +1,9 @@
+.coverage
+dist/
+.dockerignore
+.gitignore
+htmlcov/
+logs/
+test/
+.venv/
+**/__pycache__/

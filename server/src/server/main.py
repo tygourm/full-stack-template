@@ -44,7 +44,14 @@ async def swagger_ui_html() -> HTMLResponse:
 
 def main() -> None:  # pragma: no cover
     logger.info("Starting the server.")
-    run("server.main:app")
+    run(
+        "server.main:app",
+        host=settings.host,
+        port=settings.port,
+        reload=settings.reload,
+        workers=settings.workers,
+        reload_dirs=["src/server"] if settings.reload else None,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover

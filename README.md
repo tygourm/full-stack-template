@@ -40,17 +40,27 @@ Start the application in production mode.
 make serve
 ```
 
-## Miscellaneous
+### Deployment
 
-### Clean
-
-Clean the application.
+Build the docker images.
 
 ```bash
-make clean
+make docker_build
 ```
 
-### Lint / Format
+Start the deployment.
+
+```bash
+make docker_serve
+```
+
+Clean the deployment.
+
+```bash
+make docker_clean
+```
+
+## Miscellaneous
 
 Lint the codebase.
 
@@ -62,4 +72,10 @@ Format the codebase.
 
 ```bash
 make write
+```
+
+Clean the application.
+
+```bash
+make clean
 ```
